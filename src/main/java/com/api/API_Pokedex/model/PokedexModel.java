@@ -1,22 +1,22 @@
 package com.api.API_Pokedex.model;
 
 public class PokedexModel {
-    Long id;
-    String nome;
-    String descricao;
-    String classificacao;
-    String tipo1;
-    String tipo2;
-    Double peso;
-    Double altura;
-    String regioes;
-    Integer nivel;
-    Integer vida;
-    Integer vidaMaxima;
-    Integer ataque;
-    Integer defesa;
-    Integer velocidade;
-    String item;
+    private Long id;
+    private String nome;
+    private String descricao;
+    private String classificacao;
+    private String tipo1;
+    private String tipo2;
+    private Double peso;
+    private Double altura;
+    private String regioes;
+    private Integer nivel;
+    private Integer vida;
+    private Integer vidaMaxima;
+    private Integer ataque;
+    private Integer defesa;
+    private Integer velocidade;
+    private String item;
 
     public PokedexModel(Long id, String nome, String descricao, String classificacao, String tipo1, String tipo2, Double peso, Double altura, String regioes, Integer nivel, Integer vida, Integer vidaMaxima, Integer ataque, Integer defesa, Integer velocidade, String item) {
         this.id = id;

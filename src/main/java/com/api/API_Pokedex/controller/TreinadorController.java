@@ -2,7 +2,10 @@ package com.api.API_Pokedex.controller;
 
 import com.api.API_Pokedex.model.GinasioModel;
 import com.api.API_Pokedex.model.TreinadorModel;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -15,17 +18,62 @@ public class TreinadorController {
 
     private final List<TreinadorModel> treinadores = new ArrayList<>();
 
+
+    @Operation(
+            summary = "Adicionar treinador",
+            description = "Um treinador será adicionado à lista 'treinadores'"
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "271",
+                    description = "Treinador adicionado com sucesso"
+            ),
+            @ApiResponse(
+                    responseCode = "471",
+                    description = "Erro: Treinador não adicionado"
+            )
+    })
     @PostMapping
-    public TreinadorModel adicionarTreinador(@RequestBody TreinadorModel treinador) {
+    public String adicionarTreinador(@RequestBody TreinadorModel treinador) {
         treinadores.add(treinador);
-        return treinador;
+        return treinador.getNome() + " cadastrado com sucesso";
     }
 
+
+    @Operation(
+            summary = "Listar treinadores",
+            description = "Os treinadores serão listados"
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "272",
+                    description = "Treinadores foram listados"
+            ),
+            @ApiResponse(
+                    responseCode = "472",
+                    description = "Erro: Treinadores não foram listados"
+            )
+    })
     @GetMapping
     public List<TreinadorModel> listarTreinadores() {
         return treinadores;
     }
 
+
+    @Operation(
+            summary = "Buscar Treinador por ID",
+            description = "O treinador será selecionado pelo ID do treinador"
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "273",
+                    description = "Treinador encontrado"
+            ),
+            @ApiResponse(
+                    responseCode = "473",
+                    description = "Erro: Treinador não encontrado"
+            )
+    })
     @GetMapping("/{id}")
     public TreinadorModel buscarTreinadorId(@PathVariable int id){
         TreinadorModel treinador = null;
@@ -39,8 +87,23 @@ public class TreinadorController {
         return treinador;
     }
 
+
+    @Operation(
+            summary = "Atualizar Treinador",
+            description = "O treinador será atualizado"
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "274",
+                    description = "Treinador atualizado com sucesso"
+            ),
+            @ApiResponse(
+                    responseCode = "474",
+                    description = "Erro: Treinador não atualizado"
+            )
+    })
     @PutMapping("/{id}")
-    public TreinadorModel atualizarTreinador(
+    public String atualizarTreinador(
             @Parameter(
                     description = "ID do Treinador que será atualizado",
                     example = "1"
@@ -55,11 +118,26 @@ public class TreinadorController {
         }
 
         TreinadorModel set = treinadores.set(index, treinador);
-        return treinador;
+        return treinador.getNome() + " atualizado com sucesso";
     }
 
+
+    @Operation(
+            summary = "Deletar treinador",
+            description = "O treinador será deletado"
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "275",
+                    description = "Treinador deletado"
+            ),
+            @ApiResponse(
+                    responseCode = "475",
+                    description = "Erro: Treinador não deletado"
+            )
+    })
     @DeleteMapping("/{id}")
-    public void deletarTreinadorId(
+    public String deletarTreinadorId(
             @Parameter(
                     description = "ID do Treinador que será removido",
                     example = "1"
@@ -73,5 +151,6 @@ public class TreinadorController {
             }
         }
 
+        return "Treinador deletado com sucesso";
     }
 }

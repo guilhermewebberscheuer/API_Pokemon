@@ -3,11 +3,11 @@ package com.api.API_Pokedex.model;
 import java.util.ArrayList;
 
 public class GinasioModel {
-    Integer id;
-    String nome;
-    ArrayList<TreinadorModel> treinadores = new ArrayList();
-    String tipo;
-    TreinadorModel lider;
+    private Integer id;
+    private String nome;
+    private ArrayList<TreinadorModel> treinadores = new ArrayList();
+    private String tipo;
+    private TreinadorModel lider;
 
     public GinasioModel(Integer id, String nome, ArrayList<TreinadorModel> treinadores, String tipo, TreinadorModel lider) {
         this.id = id;
