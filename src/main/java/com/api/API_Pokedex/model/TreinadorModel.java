@@ -6,8 +6,8 @@ import java.util.List;
 public class TreinadorModel {
     private Integer id;
     private String nome;
-    private List<PokedexModel> timePokemon;
-    private List<String> itens;
+    private List<PokedexModel> timePokemon = new ArrayList<>();
+    private List<String> itens = new ArrayList<>();
 
     public TreinadorModel(Integer id, String nome) {
         this.id = id;
@@ -46,7 +46,7 @@ public class TreinadorModel {
         this.itens = itens;
     }
 
-    public boolean tamanhoTimePokemon() {
-        return timePokemon.size() >= 6;
+    public boolean temEspacoNoTime() {
+        return this.timePokemon != null && this.timePokemon.size() < 6;
     }
 }
